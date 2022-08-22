@@ -41,5 +41,12 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
+  if server == 'dartls' then
+    local dartls_opts = require "user.lsp.settings.dartls"
+    -- Setup flutter tools if we're using dart
+    require("flutter-tools").setup{} 
+    opts = vim.tbl_deep_extend("force", dartls_opts, opts)
+  end
+
   lspconfig[server].setup(opts)
 end
