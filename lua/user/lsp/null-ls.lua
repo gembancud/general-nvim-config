@@ -22,3 +22,5 @@ null_ls.setup {
     diagnostics.flake8,
   },
 }
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
